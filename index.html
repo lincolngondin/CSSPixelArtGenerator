@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="author" content="Lincoln Gondin">
+	<meta name="description" content="CSS Pixel Art Generator">
+	<meta name="keywords" content="CSS, pixel, art, generator">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>CSS Pixel Art Generator</title>
 	<link rel="stylesheet" type="text/css" href="index.css">
@@ -14,18 +16,18 @@
 	<main class="content">
 		<div class="draw_area">
 			<div class="controls">
-				<input id="color_hex" type="text" name="">
-				<input id="image_name" type="text" name="">
-				<div class="color_show"></div>
+				<input id="color_input" type="text" name="">
+				<input id="name_input" value="image" type="text" name="">
+				<div id="selectedcolor-viewer" class="color_show"></div>
 			</div>
 			<canvas id="draw_board" class="draw_board"></canvas>
 		</div>
 		<div class="viewer_area">
 			<div class="box css_box">
-				<pre class="css_text"></pre>
+				<pre id="css-text" class="css_text"></pre>
 			</div>
 			<div class="box">
-				<p class="html_text"></p>
+				<pre id="html-text" class="html_text"></pre>
 			</div>
 		</div>
 	</main>
