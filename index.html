@@ -8,13 +8,37 @@
 	<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-	<header>
+	<header class="header">
 		<h1>CSS Pixel Art Generator</h1>
 	</header>
 	<main class="content">
-		<canvas class="draw_area"></canvas>
+		<div class="draw_area">
+			<div class="controls">
+				<input id="color_hex" type="text" name="">
+				<input type="text" name="">
+				<div class="color_show"></div>
+			</div>
+			<canvas id="draw_board" class="draw_board"></canvas>
+		</div>
+		<div class="viewer_area">
+			<div class="box css_box">
+				<p class="css_text">
+				:root{
+  --size:5rem;
+}
+.image{
+  width:var(--size);
+  height:var(--size);
+  background:red;
+  box-shadow:calc(var(--size) * 2) calc(var(--size) * 3);
+}</p>
+			</div>
+			<div class="box"></div>
+		</div>
 	</main>
-	<footer>Created by <a target="_blank" href="https://github.com/lincolngondin">Lincoln Gondin</a></footer>
+	<footer class="footer">
+		<p>Created by <a target="_blank" href="https://github.com/lincolngondin">Lincoln Gondin</a></p>
+	</footer>
 	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>

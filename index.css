@@ -8,4 +8,75 @@ html{
 }
 body{
 	min-height: 100%;
+	background: blanchedalmond;
+	font-family: monospace;
+}
+h1{
+	text-align: center;
+}
+.header{
+	padding: 10px;
+}
+.footer{
+	text-align: center;
+	padding: 10px;
+}
+.content{
+	display: flex;
+	min-height: 80vh;
+	flex-direction: row;
+}
+.draw_area, .viewer_area{
+	flex: 1;
+}
+.css_text{
+	color: crimson;
+}
+.css_box{
+	padding: 5px;
+}
+.controls{
+	display: flex;
+	flex-direction: row;
+	width: 80%;
+	height: 20px;
+	justify-content: flex-start;
+}
+.draw_area{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+.viewer_area{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	row-gap: 20px;
+}
+.draw_board{
+	width: 80%;
+	height: 80%;
+	border: 1px solid black;
+	image-rendering: pixelated;
+}
+.color_show{
+	background: black;
+	outline: 1px solid black;
+	height: 20px;
+	width: 100px;
+}
+.box{
+	width: 90%;
+	height: 200px;
+	background: black;
+}
+@media (max-width: 500px){
+	.content{
+		flex-direction: column;
+	}
+	.viewer_area{
+		margin-top: 20px;
+	}
 }
