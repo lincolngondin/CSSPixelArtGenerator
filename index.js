@@ -50,14 +50,14 @@ const toRGB = (hex)=>{
 	let h = hex.replace(' ', '').replace('#','');
 	const rgb = [0, 0, 0];
 	if(h.length === 3){
-		rgb[0] = parseInt(h[0], 16)*parseInt(h[0], 16);
-		rgb[1] = parseInt(h[1], 16)*parseInt(h[1], 16);
-		rgb[2] = parseInt(h[2], 16)*parseInt(h[2], 16);
+		rgb[0] = Math.pow(parseInt(h[0], 16)+1, 2);
+		rgb[1] = Math.pow(parseInt(h[1], 16)+1, 2);
+		rgb[2] = Math.pow(parseInt(h[2], 16)+1, 2);
 	}
 	else{
-		rgb[0] = parseInt(h[0], 16)*parseInt(h[1], 16);
-		rgb[1] = parseInt(h[2], 16)*parseInt(h[3], 16);
-		rgb[2] = parseInt(h[4], 16)*parseInt(h[5], 16);
+		rgb[0] = parseInt(h.slice(0,2), 16);
+		rgb[1] = parseInt(h.slice(2,4), 16);
+		rgb[2] = parseInt(h.slice(4,6), 16);
 	}
 	return rgb;
 }
