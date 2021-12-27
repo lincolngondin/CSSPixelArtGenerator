@@ -93,10 +93,10 @@ image_name.onkeyup = (e)=>{
 	updateCSSViewer(getCSS('em'))
 }
 
-board.onmousedown = (e)=>{
+board.onclick = (e)=>{
 	//take coordinates in the canvas
-	let x = Math.floor((e.layerX/e.target.clientWidth) * size.width);
-	let y = Math.floor((e.layerY/e.target.clientHeight) * size.height);
+	let x = Math.floor((e.offsetX/e.target.offsetWidth) * size.width);
+	let y = Math.floor((e.offsetY/e.target.offsetHeight) * size.height);
 	//convert the selected color in a rgb form
 	const cor = toRGB(selectedColor);
 	colors[y*size.width + x] = selectedColor;
