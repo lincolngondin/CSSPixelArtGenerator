@@ -17,7 +17,7 @@ const imageData = context.createImageData(size.width, size.height);
 //all box shadows
 let boxes = '';
 //all colors of the board in hexadecimal
-const colors = [];
+const colors = new Array(size.width*size.height);
 //name of class of the div
 let name = image_name.getAttribute('value');
 let selectedColor = '#000';
@@ -29,36 +29,36 @@ const updateColorViewer = color => colorviewer.style.background = color;
 
 const updateCSSViewer = string => csstext.innerText = string;
 
-const getCSS = unity => `.${name}{\n width:1${unity};\n height:1${unity};\n box-shadow:\n  ${boxes}}`;
+const getCSS = unity => `.${name} {\n width:1${unity};\n height:1${unity};\n${boxes.length!=0?' box-shadow:\n  ':''}${boxes}}`;
 
 const updateBox = ()=>{
 	let ref = [0, 0];
+	let firstValidPixelFind = false;
 	let unity = 'em'
 	boxes = '';
 	for(let y = 0; y < size.height; y++){
 		for(let x = 0; x < size.width; x++){
 			if(colors[y*size.width + x]){
+				if(!firstValidPixelFind){
+					ref = [y, x];
+					firstValidPixelFind = true;
+				}
 				boxes += `${x-ref[0]}${unity} ${y-ref[0]}${unity} ${colors[y*size.width + x]},\n  `
 			}
 		}
 	}
-	boxes +='\n'
+	boxes = boxes.slice(0, boxes.length-4)+';\n'
 }
 
 //convert a hexadecimal code value to an rgb format
 const toRGB = (hex)=>{
 	let h = hex.replace(' ', '').replace('#','');
+	h = (h.length === 3)?`${h[0]}${h[0]}${h[1]}${h[1]}${h[2]}${h[2]}`:h;
 	const rgb = [0, 0, 0];
-	if(h.length === 3){
-		rgb[0] = Math.pow(parseInt(h[0], 16)+1, 2);
-		rgb[1] = Math.pow(parseInt(h[1], 16)+1, 2);
-		rgb[2] = Math.pow(parseInt(h[2], 16)+1, 2);
-	}
-	else{
-		rgb[0] = parseInt(h.slice(0,2), 16);
-		rgb[1] = parseInt(h.slice(2,4), 16);
-		rgb[2] = parseInt(h.slice(4,6), 16);
-	}
+	rgb[0] = parseInt(h.slice(0,2), 16);
+	rgb[1] = parseInt(h.slice(2,4), 16);
+	rgb[2] = parseInt(h.slice(4,6), 16);
+	
 	return rgb;
 }
 
