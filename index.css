@@ -74,6 +74,32 @@ h1{
 	width: 90%;
 	padding: 10px 20px;
 	background: black;
+	position:  relative;
+}
+.box__info__button > img{
+	display: block;
+	max-width: 100%;
+}
+.box__info{
+	background: hsl(16.114, 100%, 65.686%);
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-weight: bolder;
+}
+.box__info:active{
+	background: hsl(16.114, 100%, 40%);
+}
+.box__info__button{
+	background-color: transparent;
+	border: none;
+	width: 20px;
+}
+.box__info__text{
+	padding: 5px 8px;
+	user-select: none;
 }
 @media (max-width: 500px){
 	.content{

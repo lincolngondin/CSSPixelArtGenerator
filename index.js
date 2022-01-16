@@ -105,3 +105,6 @@ board.onclick = (e)=>{
 	updateCSSViewer(getCSS('em'))
 	context.putImageData(imageData, 0, 0);
 }
+
+document.querySelector('.box__infocss').onclick = e=>navigator.clipboard.writeText(csstext.innerText);
+document.querySelector('.box__infohtml').onclick = e=>navigator.clipboard.writeText(htmltext.innerText);
