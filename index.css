@@ -35,7 +35,7 @@ h1{
 .css_box{
 	max-height: 200px;
 	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 .controls{
 	display: flex;

@@ -6,7 +6,7 @@ const csstext      = document.getElementById('css-text');
 const colorviewer  = document.getElementById('selectedcolor-viewer');
 
 //change canvas draw size
-const size   = {width: 10, height:10};
+const size   = {width: 20, height:20};
 board.width  = size.width; 
 board.height = size.height;
 
@@ -32,18 +32,36 @@ const updateCSSViewer = string => csstext.innerText = string;
 const getCSS = unity => `.${name} {\n width:1${unity};\n height:1${unity};\n${boxes.length!=0?' box-shadow:\n  ':''}${boxes}}`;
 
 const updateBox = ()=>{
+	let verticalFirstPixel = [0, 0], horizontalFirstPixel = [0, 0];
 	let ref = [0, 0];
-	let firstValidPixelFind = false;
 	let unity = 'em'
 	boxes = '';
+	let close = false;
 	for(let y = 0; y < size.height; y++){
 		for(let x = 0; x < size.width; x++){
 			if(colors[y*size.width + x]){
-				if(!firstValidPixelFind){
-					ref = [y, x];
-					firstValidPixelFind = true;
-				}
-				boxes += `${x-ref[0]}${unity} ${y-ref[0]}${unity} ${colors[y*size.width + x]},\n  `
+				ref[1] = y;
+				close = true;
+				break;
+			}
+		}
+		if(close){break;}
+	}
+	close = false;
+	for(let x = 0; x < size.width; x++){
+		for(let y = 0; y < size.height; y++){
+			if(colors[y*size.width + x]){
+				ref[0] = x;
+				close = true;
+				break;
+			}
+		}
+		if(close){break;}
+	}
+	for(let y = 0; y < size.height; y++){
+		for(let x = 0; x < size.width; x++){
+			if(colors[y*size.width + x]){
+				boxes += `${x-ref[0]}${unity} ${y-ref[1]}${unity} ${colors[y*size.width + x]},\n  `
 			}
 		}
 	}
